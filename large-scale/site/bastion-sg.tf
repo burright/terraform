@@ -14,16 +14,16 @@ resource "aws_security_group" "bastion_ssh_sg" {
       cidr_blocks = ["0.0.0.0/0"]
   }
   vpc_id = "${aws_vpc.default.id}"
-  tags {
+  tags = {
       Name = "terraform_bastion_ssh"
   }
 }
 
 output "bastion_ssh_sg_id" {
-  value = "${aws_securty_group.bastion_ssh_sg.id}"
+  value = "${aws_security_group.bastion_ssh_sg.id}"
 }
 
-resource "aws_security_group" "ssh_from_bastion_sh" {
+resource "aws_security_group" "ssh_from_bastion_sg" {
   name = "ssh_from_bastion"
   description = "Allow SSH from Bastion host(s)"
   ingress {
@@ -36,7 +36,7 @@ resource "aws_security_group" "ssh_from_bastion_sh" {
       ]
   }
   vpc_id = "${aws_vpc.default.id}"
-  tags {
+  tags = {
       Name = "terraform_ssh_from_bastion"
   }
 }
