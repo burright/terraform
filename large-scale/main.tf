@@ -1,3 +1,8 @@
+provider "aws" {
+  region = "${var.region}"
+}
+
+
 module "autoscaling groups" {
     source = "./autoscaling_groups"
     public_subnet_id = "${module.site.public_subnet_id}"
