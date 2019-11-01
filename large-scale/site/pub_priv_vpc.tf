@@ -23,7 +23,7 @@ resource "aws_instance" "nat" {
   availability_zone = "${element(var.availability_zones,0)}"
   instance_type = "t2.small"
   key_name = "${var.key_name}"
-  security_groups = ["${aws_security_group_nat.id}"]
+  security_groups = ["${aws_security_group.nat.id}"]
   subnet_id = "${aws_subnet.demo_public.id}"
   associate_public_ip_address = true
   source_dest_check = false

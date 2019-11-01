@@ -1,6 +1,6 @@
 resource "aws_instance" "private_subnet_instance" {
   ami = "${lookup(var.amis, var.region, )}"
-  instantance_type = "${var.instantance_type}"
+  instance_type = "${var.instance_type}"
   tags = {
       Name = "terraform_demo_private_subnet"
   }
